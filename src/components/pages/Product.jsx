@@ -6,11 +6,23 @@ const Product = () => {
   const [data, setData] = useState([]);
   console.log("data", data);
 
+  const [loading, setLoading] = useState(false)
+
   const getProductList = async () => {
-    const response = await axios.get("https://dummyjson.com/product");
-    console.log("res", response.data.products);
-    setData(response.data.products);
+    setLoading(!loading)
+    try{
+      const response = await axios.get("https://dummyjson.com/products");
+      // console.log("res", response.data.products);
+      setData(response.data.products);
+      setLoading (false)
+      
+    } catch (err){
+        console.log(err)
+        setLoading(false)
+    }
+
   };
+
   useEffect(() => {
     getProductList();
   }, []);
@@ -20,9 +32,10 @@ const Product = () => {
       <Link to ="/" style={{textDecoration: "none"}}>
         <p style={{marginTop: "30px", marginLeft: "40px"}}>Back</p>
       </Link>
-      <p>{data[0]?.title}</p>
       <h2>Product List</h2>
-      {data.map((item, index) => (
+      {loading ? <p>Loading...</p>
+        :  
+      data.map((item, index) => (
         <ul key={index} >
           <li>{item.title}</li>
           <li>{item.brand}</li>
@@ -31,7 +44,6 @@ const Product = () => {
             {item.images.map((x) => (
               <div key={x} >
                 <img src={x} alt=""/>
-
                 </div>
             ))}
           </div>
