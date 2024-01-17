@@ -4,6 +4,7 @@ import Home from "./components/pages/Home";
 import Product from "./components/pages/Product";
 import './App.css'
 import FormPage from "./components/pages/FormPage";
+import Props from "./components/test/Props";
 
 
 
@@ -15,6 +16,8 @@ const router = createBrowserRouter(
     <Route path="/" element={<Home/>} />
       <Route path = "/product" element={<Product/>}/>
       <Route path = "/formPage" element={<FormPage/>}/>
+      <Route path = "/props" element={<Props/>}/>
+
     </>
   )
 )

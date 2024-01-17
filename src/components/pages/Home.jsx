@@ -9,6 +9,8 @@ const Home = () => {
       <nav className="navbar">
         <Link to="/product" className="nav-link">Product</Link>
         <Link to="/formPage" className="nav-link">Form</Link>
+        <Link to="/props" className="nav-link">Props</Link>
+
       </nav>
       <div className="content">
         <h1>Welcome to the Home Page</h1>
